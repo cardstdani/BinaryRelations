@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap');
+body {
+    
+    font-family: 'Open+Sans', sans-serif;
+}
+
+:root {
+    --mainColor: #F2E205; 
+    --secondColor: #F2CB05; 
+}
+
+#buttonMatrix {
+    background-color:var(--mainColor);
+    color:#ffffff;
+    border:0;
+    width:auto;
+    height:auto;
+    font-size:2rem;
+    margin-left:3rem;
+}
+
+#buttonMatrix:hover {
+    background-color:var(--secondColor);
+}
+
+#buttonMatrix:active {
+    background-color:#1f1f1f;
+}
+
+#buttonCopy {
+    background:url("copyIcon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #ffffff;
+    border:0;
+    width:1.5rem;
+    height:1.5rem;
+    font-size:0.7rem;
+}
+
+#inputRelation {
+    outline: 0;
+    height:2rem;
+    width:28rem;
+    border-width: 0 0 0.18rem;
+    font-size: 1rem;
+    border-color: var(--mainColor);
+}
+
+#inputRelation:focus {
+  border-color: var(--secondColor);
+}
+#inputRelation:hover {
+  border-color: var(--secondColor);
+}
