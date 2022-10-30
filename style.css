@@ -7,9 +7,15 @@ body {
     font-family: 'Open+Sans', sans-serif;
 }
 
+a {
+    text-decoration:none;  
+}
+
 :root {
     --mainColor: #F2DA5E;     
     --secondColor: #F2BC1B; 
+    --redColor: #E03131; 
+    --greenColor: #48e073; 
     --backColor: #fff; 
 }
 
@@ -45,7 +51,7 @@ body {
 }
 
 
-#buttonMatrix {
+#buttonMatrix, #buttonRelation {
     background-color:var(--mainColor);
     color:#ffffff;
     border:0;
@@ -55,11 +61,28 @@ body {
     margin-left:3rem;
 }
 
-#buttonMatrix:hover {
+#buttonMain, #buttonOperations {
+    background-color:var(--mainColor);
+    color:#1f1f1f;
+    border:0;
+    width:auto;
+    height:auto;
+    font-size:2rem;
+    margin-left:1.5rem;
+    transition: all .5s ease-in;
+}
+
+#buttonMain:hover, #buttonOperations:hover {
+    background-color:#1f1f1f;
+    color:#fff;
+    transition: all .5s ease-in;
+}
+
+#buttonMatrix:hover, #buttonRelation:hover {
     background-color:var(--secondColor);
 }
 
-#buttonMatrix:active {
+#buttonMatrix:active, #buttonRelation:active {
     background-color:#1f1f1f;
 }
 
@@ -74,7 +97,34 @@ body {
     font-size:0.7rem;
 }
 
-#inputRelation {
+#buttonAddRelation {
+    background:url("addIcon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #1f1f1f;
+    border:0;
+    width:2.5rem;
+    height:2.5rem;
+    transition: all .5s ease-in;
+}
+
+#buttonDeleteRelation {
+    background:url("deleteIcon.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #1f1f1f;
+    border:0;
+    width:2.5rem;
+    height:2.5rem;
+    transition: all .1s ease-in;
+}
+
+#buttonAddRelation:hover, #buttonDeleteRelation:hover {
+    background-color:#555555;
+    transition: all .1s ease-in;
+}
+
+#inputRelation, #inputMatrixRelation {
     outline: 0;
     height:2rem;
     width:28rem;
@@ -83,10 +133,10 @@ body {
     border-color: var(--mainColor);
 }
 
-#inputRelation:focus {
+#inputRelation:focus, #inputMatrixRelation:focus {
   border-color: var(--secondColor);
 }
-#inputRelation:hover {
+#inputRelation:hover, #inputMatrixRelation:hover {
   border-color: var(--secondColor);
 }
 
@@ -128,11 +178,11 @@ body {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--greenColor);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--greenColor);
 }
 
 input:checked + .slider:before {

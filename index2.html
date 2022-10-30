@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>BinaryRelations</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script src="script2.js" type="module"></script>
+    <div style="background-color:var(--mainColor);margin-bottom:4rem;">
+      <a id="buttonMain" href="index.html" type="button">
+        <b>Inicio</b>
+      </a>
+      <a id="buttonOperations" href="index2.html" type="button">
+        <b>Operaciones</b>
+      </a>
+    </div>
+    <div style="float: left; min-width: 50%;margin-left:1.5rem">
+      <div id="leftSideDiv">
+        <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold;margin:0rem 1.5rem 1.5rem 0rem">
+          <i>Introduce una/varias relaciones <span style="color:var(--mainColor)">binarias:</span>
+          </i>
+        </p>
+        <button id="buttonAddRelation" type="button" style="margin-top:1.8rem"></button>
+        <button id="buttonDeleteRelation" type="button" style="margin-top:1.8rem"></button>
+        <br>
+        <div id="inputRelationContainer1" style="margin:1.5rem;clear:both">
+          <p id="label" style="color:#1f1f1f;font-size:1.4rem;font-weight:bold;margin:0rem 1.5rem 0rem 0rem"> R1 </p>
+          <input id="inputRelation" placeholder="Aquí" type="text" value="(1, 1),(1, 3),(1, 4),(2, 2),(2, 4),(3, 1),(3, 3),(3, 4),(4, 2),(4, 4)" style="clear:both" />
+        </div>
+
+          
+      </div>
+    </div>
+    </div>
+    <div style="float: left; min-width: 50%;height:30rem;">
+      <div id="rightSideDiv"></div>
+    </div>
+  </body>
+</html>

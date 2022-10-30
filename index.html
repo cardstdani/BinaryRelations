@@ -8,6 +8,15 @@
   </head>
   <body>
     <script src="script.js" type="module"></script>
+      <div style="background-color:var(--mainColor);margin-bottom:4rem;">
+          <a id="buttonMain" href="index.html" type="button">
+            <b>Inicio</b>
+          </a>
+
+          <a id="buttonOperations" href="index2.html" type="button">
+            <b>Operaciones</b>
+          </a>
+      </div>
     <div style="float: left; min-width: 50%;">
       <div id="leftSideDiv">
         <div id="transitionDiv">
@@ -18,21 +27,21 @@
         </div>
         <div style="margin:1.5rem;clear:both">
           <input id="inputRelation" placeholder="Aquí" type="text" value="(1, 1),(1, 3),(1, 4),(2, 2),(2, 4),(3, 1),(3, 3),(3, 4),(4, 2),(4, 4)" style="clear:both" />
-          <button id="buttonMatrix" type="button" onclick="" style="">
+          <button id="buttonMatrix" type="button">
             <b>Convertir a Matriz</b>
           </button>
           <!--<p id="errorText" style="color:#dd0800;font-size:1rem;font-weight:bold;"></p>-->
         </div>
         <div style="margin:1.5rem;clear:both">
           <p style="color:#1f1f1f;font-size:1rem;font-weight:bold;">Homogénea:</p>
-          <label class="switch" style="">
+          <label class="switch">
             <input id="homogeneaToggle" type="checkbox">
             <span class="slider"></span>
           </label>
         </div>
         <div style="margin-left:1.5rem;clear:both">
-          <button id="buttonCopy" type="button" onclick="" style="float:center;margin-top:1.8rem;margin-left:1rem"></button>
-          <p id="outText" style="color:#1f1f1f;font-size:1.6rem;font-weight:bold;float:left;"></p>
+          <button id="buttonCopy" type="button" style="float:center;margin-top:1.8rem;margin-left:1rem"></button>
+          <p id="outText" style="color:#1f1f1f;font-size:2rem;font-weight:bold;float:left;"></p>
         </div>
         <div style="margin-left:1.5rem;clear:both">
           <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold">
@@ -52,7 +61,20 @@
       </div>
     </div>
     <div style="float: left; min-width: 50%;height:30rem;">
-      <div id="rightSideDiv" style="height:30rem;"></div>
+      <div id="rightSideDiv">
+          <div id="transitionDiv">
+          <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold;margin:0rem 1.5rem 1.5rem 1.5rem">
+            <i>Introduce una matriz <span style="color:var(--mainColor)">binaria:</span>
+            </i>
+          </p>
+          </div>
+
+          <input id="inputMatrixRelation" placeholder="Aquí" type="text" value="[[1,0,1,1],[0,1,0,1],[1,0,1,1],[0,1,0,1]]" style="clear:both;margin-left:1.5rem" />
+          <button id="buttonRelation" type="button">
+            <b>Convertir a Relación</b>
+          </button>
+          <p id="outRelationText" style="color:#1f1f1f;font-size:1.6rem;font-weight:bold;margin-left:1.5rem;"></p>
+      </div>
     </div>
   </body>
 </html>

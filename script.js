@@ -24,7 +24,7 @@ function generateProperties() {
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[0].length; j++) {
             try {
-                outTransitive += matrix2[i][j] >= 2 ? "<span style='color:#00ff00'>" + matrix[i][j] + "</span> " : matrix[i][j] + " ";
+                outTransitive += matrix2[i][j] >= 2 ? "<span style='color:var(--greenColor)'>" + matrix[i][j] + "</span> " : matrix[i][j] + " ";
             } catch {
                 outTransitive += matrix[i][j] + " ";
             }
@@ -32,15 +32,15 @@ function generateProperties() {
             if (i == j) {
                 outSimetry += matrix[i][j] + " ";
                 outAsimetry += matrix[i][j] + " ";
-                outReflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
-                outAntireflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
+                outReflexive += "<span style='color:" + (matrix[i][j] == 1 ? "var(--greenColor)" : "var(--redColor)") + "'>" + matrix[i][j] + "</span> ";
+                outAntireflexive += "<span style='color:" + (matrix[i][j] == 1 ? "var(--redColor)" : "var(--greenColor)") + "'>" + matrix[i][j] + "</span> ";
                 continue;
             } else if (j < matrix.length && i < matrix[0].length) {
-                outSimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
-                outAsimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
+                outSimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "var(--greenColor)" : "var(--redColor)") + "'>" + matrix[i][j] + "</span> ";
+                outAsimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "var(--redColor)" : "var(--greenColor)") + "'>" + matrix[i][j] + "</span> ";
             } else {
-                outSimetry += "<span style='color:#ff0000'>" + matrix[i][j] + "</span> ";
-                outAsimetry += "<span style='color:#00ff00'>" + matrix[i][j] + "</span> ";
+                outSimetry += "<span style='color:var(--redColor)'>" + matrix[i][j] + "</span> ";
+                outAsimetry += "<span style='color:var(--greenColor)'>" + matrix[i][j] + "</span> ";
             }
             outReflexive += matrix[i][j] + " ";
             outAntireflexive += matrix[i][j] + " ";
@@ -120,6 +120,25 @@ function generateMatrix() {
     generateProperties();
 }
 
+function generateRelation() {
+    try {
+        matrix = JSON.parse(document.getElementById("inputMatrixRelation").value);
+    } catch {
+        alert("Error");
+        return;
+    }
+
+    var outRelationText = "";
+    for (var i = 0; i<matrix.length; i++) {
+        for (var j = 0; j<matrix[0].length; j++) {
+            if(matrix[i][j]==1) {
+                outRelationText += "(" + (i+1) + "," + (j+1) + "),";
+            }
+        }
+    }
+    document.getElementById("outRelationText").innerHTML = outRelationText.slice(0, outRelationText.length-1);
+}
+
 window.onload = (event) => {
     document.getElementById("homogeneaToggle").checked = true;
 
@@ -134,6 +153,10 @@ window.onload = (event) => {
 
     document.getElementById("buttonMatrix").addEventListener("click", function() {
         generateMatrix();
+    });
+
+    document.getElementById("buttonRelation").addEventListener("click", function() {
+        generateRelation();
     });
 
     generateMatrix();
