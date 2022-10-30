@@ -1,13 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap');
+.body {
+    background-color: var(--backColor);
+       
+}
+
 body {
-    
     font-family: 'Open+Sans', sans-serif;
 }
 
 :root {
-    --mainColor: #F2E205; 
-    --secondColor: #F2CB05; 
+    --mainColor: #F2DA5E;     
+    --secondColor: #F2BC1B; 
+    --backColor: #fff; 
 }
+
+#transitionDiv {
+    background-color: var(--backColor);
+    transition: all .5s ease-in;
+}
+
+#transitionDiv:hover{
+    background-color: #1f1f1f;
+    transition: all .5s ease-in;
+}
+
+#reflexiveText, #ireflexiveText, #simetryText, #asimetryText {
+    color:#1f1f1f;font-size:1.9rem;font-weight:bold;margin-left:2rem;width:fit-content;
+    background-color: var(--backColor);
+    transition: all .5s ease-in;
+}
+
+#reflexiveText:hover, #ireflexiveText:hover, #simetryText:hover, #asimetryText:hover {
+    background-color: #1f1f1f;
+    transition: all .5s ease-in;
+}
+
 
 #buttonMatrix {
     background-color:var(--mainColor);
@@ -52,4 +79,55 @@ body {
 }
 #inputRelation:hover {
   border-color: var(--secondColor);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }

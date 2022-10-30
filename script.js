@@ -1,5 +1,6 @@
 var matrix = [];
 var matrixText = "";
+var homogenea = true;
 
 function checkString(string) {
     if ((string[0] == "(" && string[string.length - 1] == ")") && string.slice(1, string.length - 1).split(",").length == 2) {
@@ -8,25 +9,52 @@ function checkString(string) {
     return false;
 }
 
+let MatrixProduct = (A, B) =>
+  A.map((row, i) =>
+    B[0].map((_, j) =>
+      row.reduce((acc, _, n) =>
+        acc + A[i][n] * B[n][j], 0
+      )
+    )
+  )
+
 function generateProperties() {
     var outReflexive = "";
     var outAntireflexive = "";
+    var outSimetry = "";
+    var outAsimetry = "";
+
+    homogenea = document.getElementById("homogeneaToggle").checked;
+    var matrix2 = homogenea ? MatrixProduct(matrix, matrix) : [];
     
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[0].length; j++) {
+            
             if (i == j) {
+                outSimetry += matrix[i][j] + " ";
+                outAsimetry += matrix[i][j] + " ";
                 outReflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
                 outAntireflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
                 continue;
+            } else if(j<matrix.length && i<matrix[0].length) {
+                outSimetry += "<span style='color:" + (matrix[i][j]==matrix[j][i] ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
+                outAsimetry += "<span style='color:" + (matrix[i][j]==matrix[j][i] ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
+            } else {
+                outSimetry += "<span style='color:#ff0000'>" + matrix[i][j] + "</span> ";
+                outAsimetry += "<span style='color:#00ff00'>" + matrix[i][j] + "</span> ";
             }
             outReflexive += matrix[i][j] + " ";
-            outAntireflexive += matrix[i][j] + " ";
+            outAntireflexive += matrix[i][j] + " ";            
         }
         outReflexive += "<br>";
         outAntireflexive += "<br>";
+        outSimetry += "<br>";
+        outAsimetry += "<br>";
     }
     document.getElementById("reflexiveText").innerHTML = outReflexive;
-    document.getElementById("antireflexiveText").innerHTML = outAntireflexive;
+    document.getElementById("ireflexiveText").innerHTML = outAntireflexive;
+    document.getElementById("simetryText").innerHTML = outSimetry;
+    document.getElementById("asimetryText").innerHTML = outAsimetry;
 }
 
 function generateMatrix() {
@@ -51,6 +79,13 @@ function generateMatrix() {
 
     setA = Array.from(setA).sort();
     setB = Array.from(setB).sort();
+
+    if(homogenea) {
+        if(setA.size>=setB.size) {
+            setB=setA;
+        }else{setA=setB;}
+    }
+    
     matrix = [];
     for (var i of setA) {
         matrix.push([]);
@@ -73,11 +108,12 @@ function generateMatrix() {
     matrixText = "[" + matrixText.slice(0, matrixText.length - 1) + "]";
 
     document.getElementById("outText").innerHTML = out;
+    generateProperties();
 }
 
 window.onload = (event) => {
-    generateMatrix();
-    generateProperties();
+    document.getElementById("homogeneaToggle").checked = true;
+    generateMatrix();    
 
     document.getElementById("buttonCopy").addEventListener("click", function() {
         navigator.clipboard.writeText(matrixText);
@@ -85,7 +121,6 @@ window.onload = (event) => {
     });
 
     document.getElementById("buttonMatrix").addEventListener("click", function() {
-        generateMatrix();
-        generateProperties();
+        generateMatrix();        
     });
 };
