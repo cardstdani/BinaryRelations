@@ -9,52 +9,54 @@ function checkString(string) {
     return false;
 }
 
-let MatrixProduct = (A, B) =>
-  A.map((row, i) =>
-    B[0].map((_, j) =>
-      row.reduce((acc, _, n) =>
-        acc + A[i][n] * B[n][j], 0
-      )
-    )
-  )
+let MatrixProduct = (A, B) => A.map((row, i) => B[0].map((_, j) => row.reduce((acc, _, n) => acc + A[i][n] * B[n][j], 0)))
 
 function generateProperties() {
     var outReflexive = "";
     var outAntireflexive = "";
     var outSimetry = "";
     var outAsimetry = "";
+    var outTransitive = "";
 
     homogenea = document.getElementById("homogeneaToggle").checked;
-    var matrix2 = homogenea ? MatrixProduct(matrix, matrix) : [];
-    
+    var matrix2 = homogenea || matrix.length == matrix[0].length ? MatrixProduct(matrix, matrix) : [];
+
     for (var i = 0; i < matrix.length; i++) {
         for (var j = 0; j < matrix[0].length; j++) {
-            
+            try {
+                outTransitive += matrix2[i][j] >= 2 ? "<span style='color:#00ff00'>" + matrix[i][j] + "</span> " : matrix[i][j] + " ";
+            } catch {
+                outTransitive += matrix[i][j] + " ";
+            }
+
             if (i == j) {
                 outSimetry += matrix[i][j] + " ";
                 outAsimetry += matrix[i][j] + " ";
                 outReflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
                 outAntireflexive += "<span style='color:" + (matrix[i][j] == 1 ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
                 continue;
-            } else if(j<matrix.length && i<matrix[0].length) {
-                outSimetry += "<span style='color:" + (matrix[i][j]==matrix[j][i] ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
-                outAsimetry += "<span style='color:" + (matrix[i][j]==matrix[j][i] ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
+            } else if (j < matrix.length && i < matrix[0].length) {
+                outSimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "#00ff00" : "#ff0000") + "'>" + matrix[i][j] + "</span> ";
+                outAsimetry += "<span style='color:" + (matrix[i][j] == matrix[j][i] ? "#ff0000" : "#00ff00") + "'>" + matrix[i][j] + "</span> ";
             } else {
                 outSimetry += "<span style='color:#ff0000'>" + matrix[i][j] + "</span> ";
                 outAsimetry += "<span style='color:#00ff00'>" + matrix[i][j] + "</span> ";
             }
             outReflexive += matrix[i][j] + " ";
-            outAntireflexive += matrix[i][j] + " ";            
+            outAntireflexive += matrix[i][j] + " ";
         }
         outReflexive += "<br>";
         outAntireflexive += "<br>";
         outSimetry += "<br>";
         outAsimetry += "<br>";
+        outTransitive += "<br>";
     }
+
     document.getElementById("reflexiveText").innerHTML = outReflexive;
     document.getElementById("ireflexiveText").innerHTML = outAntireflexive;
     document.getElementById("simetryText").innerHTML = outSimetry;
     document.getElementById("asimetryText").innerHTML = outAsimetry;
+    document.getElementById("transitivityText").innerHTML = outTransitive;
 }
 
 function generateMatrix() {
@@ -80,12 +82,14 @@ function generateMatrix() {
     setA = Array.from(setA).sort();
     setB = Array.from(setB).sort();
 
-    if(homogenea) {
-        if(setA.size>=setB.size) {
-            setB=setA;
-        }else{setA=setB;}
+    if (homogenea) {
+        if (setA.size >= setB.size) {
+            setB = setA;
+        } else {
+            setA = setB;
+        }
     }
-    
+
     matrix = [];
     for (var i of setA) {
         matrix.push([]);
@@ -99,12 +103,17 @@ function generateMatrix() {
                 }
             }
 
-            if (!added) { matrix[matrix.length - 1].push(0); }
+            if (!added) {
+                matrix[matrix.length - 1].push(0);
+            }
         }
     }
 
     matrixText = "";
-    for (var i of matrix) { matrixText += "[" + i.toString() + "],"; out += i.toString().split(",").join(" ") + "<br>"; }
+    for (var i of matrix) {
+        matrixText += "[" + i.toString() + "],";
+        out += i.toString().split(",").join(" ") + "<br>";
+    }
     matrixText = "[" + matrixText.slice(0, matrixText.length - 1) + "]";
 
     document.getElementById("outText").innerHTML = out;
@@ -113,7 +122,10 @@ function generateMatrix() {
 
 window.onload = (event) => {
     document.getElementById("homogeneaToggle").checked = true;
-    generateMatrix();    
+
+    document.getElementById("homogeneaToggle").addEventListener('change', e => {
+        homogenea = document.getElementById("homogeneaToggle").checked;
+    });    
 
     document.getElementById("buttonCopy").addEventListener("click", function() {
         navigator.clipboard.writeText(matrixText);
@@ -121,6 +133,8 @@ window.onload = (event) => {
     });
 
     document.getElementById("buttonMatrix").addEventListener("click", function() {
-        generateMatrix();        
+        generateMatrix();
     });
+
+    generateMatrix();
 };

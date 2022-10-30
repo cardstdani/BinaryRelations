@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap');
 .body {
-    background-color: var(--backColor);
-       
+    background-color: var(--backColor);       
 }
 
 body {
@@ -24,13 +23,23 @@ body {
     transition: all .5s ease-in;
 }
 
-#reflexiveText, #ireflexiveText, #simetryText, #asimetryText {
+#leftSideDiv, #rightSideDiv {
+    border-left: 0rem solid #1f1f1f;
+    transition: all .5s ease-in;
+}
+
+#leftSideDiv:hover, #rightSideDiv:hover{
+    border-left: 0.8rem solid var(--mainColor);
+    transition: all .5s ease-in;
+}
+
+#reflexiveText, #ireflexiveText, #simetryText, #asimetryText, #transitivityText {
     color:#1f1f1f;font-size:1.9rem;font-weight:bold;margin-left:2rem;width:fit-content;
     background-color: var(--backColor);
     transition: all .5s ease-in;
 }
 
-#reflexiveText:hover, #ireflexiveText:hover, #simetryText:hover, #asimetryText:hover {
+#reflexiveText:hover, #ireflexiveText:hover, #simetryText:hover, #asimetryText:hover, #transitivityText:hover {
     background-color: #1f1f1f;
     transition: all .5s ease-in;
 }
