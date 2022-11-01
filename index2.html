@@ -17,7 +17,7 @@
       </a>
     </div>
     <div style="float: left; min-width: 50%;margin-left:1.5rem">
-      <div id="leftSideDiv">
+      <div id="leftSideDiv" style="float:left">
         <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold;margin:0rem 1.5rem 1.5rem 0rem">
           <i>Introduce una/varias relaciones <span style="color:var(--mainColor)">binarias:</span>
           </i>
@@ -29,13 +29,16 @@
           <p id="label" style="color:#1f1f1f;font-size:1.4rem;font-weight:bold;margin:0rem 1.5rem 0rem 0rem"> R1 </p>
           <input id="inputRelation" placeholder="Aquí" type="text" value="(1, 1),(1, 3),(1, 4),(2, 2),(2, 4),(3, 1),(3, 3),(3, 4),(4, 2),(4, 4)" style="clear:both" />
         </div>
-
-          
       </div>
-    </div>
-    </div>
-    <div style="float: left; min-width: 50%;height:30rem;">
-      <div id="rightSideDiv"></div>
+      <div id="rightSideDiv" style="float:right">
+        <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold;margin:0rem 1.5rem 1.5rem 0rem">
+          <i>Escribe la operación que desea realizar: </i>
+        </p>
+          <input id="inputOperation" placeholder="Aquí" type="text" value="R1+R2" style="clear:both" />
+          <button id="buttonCalculate" type="button">
+            <b>Calcular</b>
+          </button>
+      </div>
     </div>
   </body>
 </html>

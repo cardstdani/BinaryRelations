@@ -19,16 +19,6 @@ a {
     --backColor: #fff; 
 }
 
-#transitionDiv {
-    background-color: var(--backColor);
-    transition: all .5s ease-in;
-}
-
-#transitionDiv:hover{
-    background-color: #1f1f1f;
-    transition: all .5s ease-in;
-}
-
 #leftSideDiv, #rightSideDiv {
     border-left: 0rem solid #1f1f1f;
     transition: all .5s ease-in;
@@ -51,7 +41,7 @@ a {
 }
 
 
-#buttonMatrix, #buttonRelation {
+#buttonMatrix, #buttonRelation, #buttonCalculate {
     background-color:var(--mainColor);
     color:#ffffff;
     border:0;
@@ -59,6 +49,14 @@ a {
     height:auto;
     font-size:2rem;
     margin-left:3rem;
+}
+
+#buttonMatrix:hover, #buttonRelation:hover, #buttonCalculate:hover {
+    background-color:var(--secondColor);
+}
+
+#buttonMatrix:active, #buttonRelation:active, #buttonCalculate:focus {
+    background-color:#1f1f1f;
 }
 
 #buttonMain, #buttonOperations {
@@ -76,14 +74,6 @@ a {
     background-color:#1f1f1f;
     color:#fff;
     transition: all .5s ease-in;
-}
-
-#buttonMatrix:hover, #buttonRelation:hover {
-    background-color:var(--secondColor);
-}
-
-#buttonMatrix:active, #buttonRelation:active {
-    background-color:#1f1f1f;
 }
 
 #buttonCopy {
@@ -124,7 +114,7 @@ a {
     transition: all .1s ease-in;
 }
 
-#inputRelation, #inputMatrixRelation {
+#inputRelation, #inputMatrixRelation, #inputOperation {
     outline: 0;
     height:2rem;
     width:28rem;
@@ -133,10 +123,10 @@ a {
     border-color: var(--mainColor);
 }
 
-#inputRelation:focus, #inputMatrixRelation:focus {
+#inputRelation:focus, #inputMatrixRelation:focus, #inputOperation:focus {
   border-color: var(--secondColor);
 }
-#inputRelation:hover, #inputMatrixRelation:hover {
+#inputRelation:hover, #inputMatrixRelation:hover, #inputOperation:hover {
   border-color: var(--secondColor);
 }
 

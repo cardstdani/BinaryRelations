@@ -160,4 +160,5 @@ window.onload = (event) => {
     });
 
     generateMatrix();
+    generateRelation();
 };
