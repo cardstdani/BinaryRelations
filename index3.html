@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>BinaryRelations</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+      <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2048px-Unofficial_JavaScript_logo_2.svg.png" />
+
+      <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'>
+
+	</script>	
+  </head>
+  <body>
+    <script src="script3.js" type="module"></script>
+    <div style="background-color:var(--mainColor);margin-bottom:4rem;">
+      <a id="buttonMain" href="index.html" type="button">
+        <b>Inicio</b>
+      </a>
+      <a id="buttonOperations" href="index2.html" type="button">
+        <b>Operaciones</b>
+      </a>
+        <a id="buttonIa" href="index3.html" type="button">
+            <b>IA</b>
+          </a>
+    </div>
+    <div style="float: left; min-width: 50%;margin-left:1.5rem">
+      <div id="leftSideDiv" style="float:left">
+        <p style="color:#1f1f1f;font-size:2.8rem;font-weight:bold;margin:0rem 1.5rem 1.5rem 0rem">
+          <i>Arrastra una imágen con una matriz:</i>
+        </p>
+          <input type="file" id="inputImage" accept="image/*"  style="color:#1f1f1f">
+          <p id="outText" style="color:#1f1f1f;font-size:2rem;font-weight:bold;"></p>
+          <button id="buttonCopy" type="button" style="float:center;margin-top:1.8rem;margin-left:1rem"></button>
+      </div>
+      <div id="rightSideDiv" style="float:right">
+
+      </div>
+    </div>
+  </body>
+</html>

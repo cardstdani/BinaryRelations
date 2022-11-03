@@ -113,4 +113,9 @@ window.onload = (event) => {
     document.getElementById("buttonCalculate").addEventListener("click", function() {
         calculate();
     });
+
+    document.getElementById("buttonCopy").addEventListener("click", function() {
+        navigator.clipboard.writeText(matrixText);
+        alert("Copied to clipboard");
+    });
 };

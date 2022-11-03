@@ -59,7 +59,7 @@ a {
     background-color:#1f1f1f;
 }
 
-#buttonMain, #buttonOperations {
+#buttonMain, #buttonOperations, #buttonIa {
     background-color:var(--mainColor);
     color:#1f1f1f;
     border:0;
@@ -70,7 +70,7 @@ a {
     transition: all .5s ease-in;
 }
 
-#buttonMain:hover, #buttonOperations:hover {
+#buttonMain:hover, #buttonOperations:hover, #buttonIa:hover {
     background-color:#1f1f1f;
     color:#fff;
     transition: all .5s ease-in;
